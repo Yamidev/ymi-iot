@@ -13,9 +13,7 @@
     },
   "scripts": {
       "post-install-cmd": [
-			"php -r \"chmod( __DIR__ . '/vendor/ymi/iot/configure.sh', 0777);\"",
-			"php -r \"shell_exec('sh '.__DIR__ . '/vendor/ymi/iot/configure.sh');\"",
-            "php -r \"shell_exec('php '.__DIR__ . '/vendor/ymi/iot/update.php');\""
+            		"php -r \"shell_exec('php '.__DIR__ . '/vendor/ymi/iot/update.php');\""
 		]
   }
 }
