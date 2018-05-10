@@ -1,5 +1,5 @@
 {
-    "name": "yami/ymi-iot",
+    "name": "ymi/iot",
     "description": "Cliente para o YMI IOT",
     "require": {
         "php": "^5.6 || ^7.0"
