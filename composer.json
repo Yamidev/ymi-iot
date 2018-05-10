@@ -1,6 +1,13 @@
 {
     "name": "ymi/iot",
     "description": "Cliente para o YMI IOT",
+    "authors": [
+        {
+            "name": "Rafael Bertolli",
+            "email": "github-rbertolli@yami.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
     "require": {
         "php": "^5.6 || ^7.0"
     }
