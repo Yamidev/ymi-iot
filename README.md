@@ -7,3 +7,10 @@ Crie um diretório onde vai ficar hospedada a aplicação cliente do YMI IOT
 Execute o seguindo comando no terminal
 
 composer require ymi/iot
+
+
+Depois adicione ao cron para executar o arquivo a cada 1 minuto
+
+* * * * * php {diretorio}/vendor/ymi/iot/update.php > /dev/null
+
+
