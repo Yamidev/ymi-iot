@@ -13,4 +13,18 @@ Depois adicione ao cron para executar o arquivo a cada 1 minuto
 
 * * * * * php {diretorio}/vendor/ymi/iot/update.php > /dev/null
 
+Crie a variavel gateway com o comando no terminal do linux
+
+gateway=$(ifconfig -a | grep -ioE '([a-z0-9]{2}:){5}..' | head -1 )
+
+Em seguida execute o comando abaixo para 
+
+sed -i -e 's/MACADDR/'"$gateway"'/g' {diretorio}/vendor/ymi/iot/update.php
+
+
+
+
+
+
+
 
