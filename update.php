@@ -29,8 +29,20 @@ ini_set('display_errors', 0);
     $convert_json = (array)json_decode($result);
 
 
-    foreach ($convert_json['command'] as $key=>$value) {
-        exec($value, $retorno);
+    $totalcommands = count($convert_json['command']);
+
+    if($totalcommands > 0) {
+        foreach ($convert_json['command'] as $key=>$value) {
+            if($_GET['debug'] == "true") {
+                echo "Executou: ".$value."<br>";
+            }
+            exec($value, $retorno);
+        }
+    }
+
+    if($_GET['debug'] == "true") {
+        print_r($convert_json);
+        die();
     }
 
 
