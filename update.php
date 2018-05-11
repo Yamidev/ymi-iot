@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 
 
@@ -5,17 +6,31 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
 
-    $cmd = "arp -a ";
-    $status = 0;
-    $return = [];
-    exec($cmd, $return, $status);
+function get_server_memory_usage(){
 
-    $pegamac = explode(" ",$return[0]);
+    $free = shell_exec('free');
+    $free = (string)trim($free);
+    $free_arr = explode("\n", $free);
+    $mem = explode(" ", $free_arr[1]);
+    $mem = array_filter($mem);
+    $mem = array_merge($mem);
+    $memory_usage = $mem[2]/$mem[1]*100;
 
-    $devicemac = $pegamac[3];
+    return $memory_usage;
+}
+
+function get_server_cpu_usage(){
+
+    $load = sys_getloadavg();
+    return json_encode($load);
+
+}
+
+    
+    $devicemac = "5c:f9:38:93:25:1a";
 
     $url = 'https://yami.run.ymi.com.br/devices/';
-    $data = array("deviceid" => $devicemac);
+    $data = array("deviceid" => $devicemac,"ram" => get_server_memory_usage(), "cpu" => get_server_cpu_usage());
     $ch=curl_init($url);
     $data_string = urlencode(json_encode($data));
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -28,21 +43,11 @@ ini_set('display_errors', 0);
 
     $convert_json = (array)json_decode($result);
 
-
-    $totalcommands = count($convert_json['command']);
-
-    if($totalcommands > 0) {
-        foreach ($convert_json['command'] as $key=>$value) {
-            if($_GET['debug'] == "true") {
-                echo "Executou: ".$value."<br>";
-            }
-            exec($value, $retorno);
-        }
-    }
-
-    if($_GET['debug'] == "true") {
-        print_r($convert_json);
-        die();
+    foreach ($convert_json['command'] as $key=>$value) {
+        if($value != "") {
+                echo "Executou -".$value."<br>";
+        	exec($value, $retorno);
+	}
     }
 
 
