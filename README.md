@@ -22,6 +22,18 @@ Em seguida execute o comando abaixo para
 sed -i -e 's/MACADDR/'"$gateway"'/g' {diretorio}/vendor/ymi/iot/update.php
 
 
+Add an alias to your application client
+
+# vi .bash_profile
+
+alias ymi-client='php /Users/rafaelbertolli/ymi-iot/vendor/ymi/iot/input.php'
+
+After Save
+
+# source .bash_profile
+
+
+
 
 
 
