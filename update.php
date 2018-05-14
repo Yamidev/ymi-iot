@@ -1,36 +1,25 @@
 #!/usr/bin/php
 <?php
 
+if (!file_exists("macaddr.txt")) {
+    	echo "Device ID not found";
+	die();
+}
 
 error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
-
-function get_server_memory_usage(){
-
-    $free = shell_exec('free');
-    $free = (string)trim($free);
-    $free_arr = explode("\n", $free);
-    $mem = explode(" ", $free_arr[1]);
-    $mem = array_filter($mem);
-    $mem = array_merge($mem);
-    $memory_usage = $mem[2]/$mem[1]*100;
-
-    return $memory_usage;
-}
-
-function get_server_cpu_usage(){
-
-    $load = sys_getloadavg();
-    return json_encode($load);
-
-}
-
     
-    $devicemac = "5c:f9:38:93:25:1a";
+    $devicemac = file_get_contents('macaddr.txt'); 
+
+    exec('lpstat -a',$impressoras);
+    $json_impressoras = json_encode($impressoras);
+    
+    exec('lsusb',$usbdevices);
+    $json_usb = json_encode($usbdevices);
 
     $url = 'https://yami.run.ymi.com.br/devices/';
-    $data = array("deviceid" => $devicemac,"ram" => get_server_memory_usage(), "cpu" => get_server_cpu_usage());
+    $data = array("deviceid" => $devicemac, "printers" => $json_impressoras, "usb" => $json_usb);
     $ch=curl_init($url);
     $data_string = urlencode(json_encode($data));
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -42,6 +31,9 @@ function get_server_cpu_usage(){
     curl_close($ch);
 
     $convert_json = (array)json_decode($result);
+    
+
+    //echo $convert_json['debug']."\n";
 
     foreach ($convert_json['command'] as $key=>$value) {
         if($value != "") {
