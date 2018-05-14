@@ -25,11 +25,15 @@ Add an alias to your application client
 
   > vi .bash_profile !
 
-  > alias ymi-client='php /Users/rafaelbertolli/ymi-iot/vendor/ymi/iot/input.php' !
+  > alias ymi-client='php {DIRINSTALATION}ymi-iot/vendor/ymi/iot/input.php' 
 
 After Save
 
-  > source .bash_profile !
+  > source .bash_profile 
+  
+Now, everytime you need you client just type
+
+  > ymi-client
 
 
 
