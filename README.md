@@ -16,29 +16,29 @@ Depois adicione ao cron para executar o arquivo a cada 1 minuto
 Crie a variavel gateway com o comando no terminal do linux
 
 ...
- gateway=$(ifconfig -a | grep -ioE '([a-z0-9]{2}:){5}..' | head -1 )
+$ gateway=$(ifconfig -a | grep -ioE '([a-z0-9]{2}:){5}..' | head -1 ) !
 ...
 
 Em seguida execute o comando abaixo para 
 
 ...
- sed -i -e 's/MACADDR/'"$gateway"'/g' {diretorio}/vendor/ymi/iot/update.php
+$ sed -i -e 's/MACADDR/'"$gateway"'/g' {diretorio}/vendor/ymi/iot/update.php !
 ...
 
 Add an alias to your application client
 
 ...
- vi .bash_profile
+$ vi .bash_profile !
 ...
 
 ...
-alias ymi-client='php /Users/rafaelbertolli/ymi-iot/vendor/ymi/iot/input.php'
+$ alias ymi-client='php /Users/rafaelbertolli/ymi-iot/vendor/ymi/iot/input.php' !
 ...
 
 After Save
 
 ...
- source .bash_profile
+$ source .bash_profile !
 ...
 
 
