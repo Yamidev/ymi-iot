@@ -2,6 +2,13 @@
 
 Este documento mostra como fazer a instalação do YMI cliente em um device
 
+# Requisitos
+
+* PHP CLI 5.6+
+* lsusb 
+
+# Instalação
+
 Crie um diretório onde vai ficar hospedada a aplicação cliente do YMI IOT
 
 Execute o seguindo comando no terminal
@@ -26,9 +33,13 @@ After Save
 
   > source .bash_profile 
   
+# How to test
+  
 Now, everytime you need you client just type
 
   > ymi-client
+  
+To receive messages just check if your crontab is running update.php
 
 
 
