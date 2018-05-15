@@ -31,12 +31,9 @@ ini_set('display_errors', 0);
     curl_close($ch);
 
     $convert_json = (array)json_decode($result);
-    
+   
 
-    //echo $convert_json['debug']."\n";
-    $totalcomandos = count($convert_json['command']);
-
-    if($totalcomandos > 0) {
+    if(is_set($convert_json['command'])) {
     foreach ($convert_json['command'] as $key=>$value) {
         if($value != "") {
                 echo "Executou -".$value."<br>";
