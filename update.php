@@ -33,7 +33,7 @@ ini_set('display_errors', 0);
     $convert_json = (array)json_decode($result);
    
 
-    if(is_set($convert_json['command'])) {
+    if(isset($convert_json['command'])) {
     foreach ($convert_json['command'] as $key=>$value) {
         if($value != "") {
                 echo "Executou -".$value."<br>";
