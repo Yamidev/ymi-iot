@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 
-if (!file_exists("macaddr.txt")) {
+if (!file_exists(__DIR__."/macaddr.txt")) {
     	echo "Device ID not found";
 	die();
 }
@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0);
 
     
-    $devicemac = file_get_contents('macaddr.txt'); 
+    $devicemac = file_get_contents(__DIR__.'/macaddr.txt'); 
 
     exec('lpstat -a',$impressoras);
     $json_impressoras = json_encode($impressoras);
