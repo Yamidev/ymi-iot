@@ -19,7 +19,7 @@ ini_set('display_errors', 0);
     $json_usb = json_encode($usbdevices);
 
     $url = 'https://yami.run.ymi.com.br/devices/';
-    $data = array("deviceid" => $devicemac, "printers" => $json_impressoras, "usb" => $json_usb);
+    $data = array("deviceid" => $devicemac, "printers" => $json_impressoras, "usb" => $json_usb, "receive" => 1);
     $ch=curl_init($url);
     $data_string = urlencode(json_encode($data));
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
