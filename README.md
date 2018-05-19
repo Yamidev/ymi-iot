@@ -27,7 +27,7 @@ Add an alias to your application client
 
   > vi .bash_profile !
 
-  > alias ymi-client='php {DIRINSTALATION}ymi-iot/vendor/ymi/iot/input.php' 
+  > alias ymi-client='php {DIRINSTALATION}/input.php' 
 
 After Save
 
@@ -39,7 +39,7 @@ Now, everytime you need you client just type
 
   > ymi-client
   
-To receive messages just check if your crontab is running update.php
+He will open a background consume.php to receive messages from rabbitMq
 
 #examples
 
