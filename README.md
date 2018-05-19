@@ -4,7 +4,7 @@ Este documento mostra como fazer a instalação do YMI cliente em um device
 
 # Requisitos
 
-* PHP CLI 5.6+
+* PHP CLI 7+
 * lsusb 
 
 # Instalação
@@ -21,7 +21,7 @@ Entre na pasta vendor/ymi/iot/ e crie o arquivo de licença do deviceid
 
 Depois adicione ao cron para executar o arquivo a cada 1 minuto
 
- > * * * * * php {diretorio}/vendor/ymi/iot/update.php > /dev/null
+ > ymi-client
 
 Add an alias to your application client
 
@@ -41,6 +41,19 @@ Now, everytime you need you client just type
   
 To receive messages just check if your crontab is running update.php
 
+#examples
+
+Queue message to print
+
+> php print.php '["{\"text\" : \"rafael\"}","{\"qrcode\":\"joaozinho\"}","{\"barcode\":\"sabrina\"}","{\"text\":\"texto2\"}"]' | lpr
+
+Generate barcode to barcode.png 
+
+> php barcode_noprint.php {text_to_barcode} {label_to_barcode*optional} {type_barcode*optional}
+
+Generate qrcode to qrcode.png
+
+> php qrcode '{text_to_qrcode|' '{setLabel*optional}' {setSize*optional} {setFontSize*optional} {SetPadding*optional}
 
 
 
