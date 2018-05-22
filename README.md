@@ -45,7 +45,9 @@ He will open a background consume.php to receive messages from rabbitMq
 
 Queue message to print
 
-> php print.php '["{\"text\" : \"rafael\"}","{\"qrcode\":\"joaozinho\"}","{\"barcode\":\"sabrina\"}","{\"text\":\"texto2\"}"]' | lpr
+> {"command" : "php {dir}print.php '[\"{\"text\" : \"rafael\"}\",\"{\"qrcode\":\"joaozinho\"}\",\"{\"barcode\":\"sabrina\"}\",\"{\"text\":\"texto2\"}\"]' | lp"}
+
+>> {dir} is replaced with the IOT client directory
 
 Generate barcode to barcode.png 
 
