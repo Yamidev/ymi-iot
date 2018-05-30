@@ -45,7 +45,7 @@ He will open a background consume.php to receive messages from rabbitMq
 
 Queue message to print
 
-> {"command" : "php {dir}print.php '[\"{\"text\" : \"rafael\"}\",\"{\"qrcode\":\"joaozinho\"}\",\"{\"barcode\":\"sabrina\"}\",\"{\"text\":\"texto2\"}\"]' | lp"}
+> {"print":[{"text":"rafael"},{"qrcode":"joaozinho"},{"barcode":"sabrina"},{"text":"texto2"}]}
 
 >> {dir} is replaced with the IOT client directory
 
